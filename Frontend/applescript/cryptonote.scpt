@@ -7,8 +7,8 @@ property analysisNoteTitle : "Analysis"
 property tradeNoteTitle : "Trade"
 
 -- AI Agent Configuration
-property agentUrl : "https://autonome.alt.technology/agent-etilov/chat"
-property authHeader : "Basic YWdlbnQ6c3dSemphaXFHbA=="
+property agentUrl : "https://autonome.alt.technology/agent-gnkfqk/chat"
+property authHeader : "Basic YWdlbnQ6eGtwYWJ0SnV5Vg=="
 property walletKey : "test_wallet_key_12345"
 
 -- Generate random string

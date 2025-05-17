@@ -17,7 +17,7 @@ echo "======================="
 
 # Get script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SCRIPT_PATH="$SCRIPT_DIR/cryptonote-test.scpt"
+SCRIPT_PATH="$SCRIPT_DIR/cryptonote.scpt"
 
 # Create log directory
 echo -e "${YELLOW}Setting up logging...${NC}"
