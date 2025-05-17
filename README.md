@@ -21,6 +21,7 @@ This represents new paradigm of interaction with blockchain: no new interface, n
 
 
 ## Architecture
+![CryptoNoteDiagram](https://github.com/user-attachments/assets/46d27ce4-09ff-436c-9aa1-e6241eec851d)
 
 
 ## Usage Scenario
