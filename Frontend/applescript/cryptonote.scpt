@@ -7,8 +7,10 @@ property memoryNoteTitle : "Memory"
 property newsNoteTitle : "News"
 property analysisNoteTitle : "Analysis"
 property tradeNoteTitle : "Trade"
-property apiBaseUrl : "https://api.cryptonote.app" -- Replace with your actual API endpoint
-property walletKeychain : "CryptoNote_Wallet" -- Keychain item for storing wallet info
+
+-- API Configuration
+property apiUrl : "http://localhost:3000/api" -- local test API
+property walletKey : "test_wallet_key_12345" -- private key
 
 -- Helper function to replace text
 on replace_text(theText, searchString, replacementString)
@@ -48,14 +50,14 @@ on getWallet()
 end getWallet
 
 -- Process Memory note with API
-on processMemory(noteContent)
+on processMemory(currentContent)
     -- Split content into paragraphs
-    set paragraphList to paragraphs of noteContent
+    set paragraphList to paragraphs of currentContent
     set paragraphCount to count of paragraphList
     
     -- Create a new content string
     set newContent to ""
-    set processedCount to 0
+    set memoryProcessed to 0
     
     -- Process each paragraph
     repeat with i from 1 to paragraphCount
@@ -78,37 +80,21 @@ on processMemory(noteContent)
             
             -- If no response, add one
             if not hasResponse then
-                -- Get wallet info
-                set walletInfo to getWallet()
-                if walletInfo is "" then
-                    return noteContent
+                -- Call API
+                set apiResponse to callAPI("/memory", currentParagraph)
+                
+                -- Simple response parsing
+                if apiResponse contains "error" then
+                    set newContent to newContent & "
+
+❌ wrong: API call failed"
+                else
+                    set newContent to newContent & "
+
+🔄 Memory saved: " & apiResponse
+                    
+                    set memoryProcessed to memoryProcessed + 1
                 end if
-                
-                -- Prepare API call
-                set encodedEntry to do shell script "echo " & quoted form of currentParagraph & " | base64"
-                set encodedWallet to do shell script "echo " & quoted form of walletInfo & " | base64"
-                
-                set curlCmd to "curl -s -X POST " & apiBaseUrl & "/memory/create -H 'Content-Type: application/json' -d '{\"content\":\"" & encodedEntry & "\",\"wallet\":\"" & encodedWallet & "\"}'"
-                
-                try
-                    -- Call API
-                    set apiResponse to do shell script curlCmd
-                    
-                    -- Add response
-                    set newContent to newContent & "
-
-🔄 Memory preserved: " & apiResponse
-                    
-                    logMessage("Memory entry processed successfully")
-                    set processedCount to processedCount + 1
-                on error errMsg
-                    -- Add error response
-                    set newContent to newContent & "
-
-❌ Error: " & errMsg
-                    
-                    logMessage("Error processing memory: " & errMsg)
-                end try
             end if
         end if
         
@@ -119,7 +105,7 @@ on processMemory(noteContent)
         end if
     end repeat
     
-    return {newContent, processedCount}
+    return {newContent, memoryProcessed}
 end processMemory
 
 -- Process News note with API
@@ -347,6 +333,19 @@ on processTrade(noteContent)
     
     return {newContent, processedCount}
 end processTrade
+
+-- simple API call
+on callAPI(endpoint, content)
+    set jsonData to "{\"content\":\"" & content & "\",\"wallet\":\"" & walletKey & "\"}"
+    set curlCmd to "curl -s -X POST " & apiUrl & endpoint & " -H 'Content-Type: application/json' -d '" & jsonData & "'"
+    
+    try
+        set apiResponse to do shell script curlCmd
+        return apiResponse
+    on error errMsg
+        return "{\"error\":\"" & errMsg & "\"}"
+    end try
+end callAPI
 
 -- Main execution
 on run
