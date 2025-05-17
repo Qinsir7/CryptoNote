@@ -20,3 +20,8 @@ We're creating an AI co-pilot for the entire Web3 ecosystem, accessible throug
 Interface: Notes 
 Dashboard: Provide scripts for user (later program and TEE support)
 
+
+
+## Run Script
+chmod +x setup.sh
+./setup.sh
