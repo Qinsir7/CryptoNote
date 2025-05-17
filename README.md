@@ -37,5 +37,7 @@ Dashboard: Provide scripts for user (later program and TEE support)
 
 
 ## Run Script
+```
 chmod +x setup.sh
 ./setup.sh
+```
