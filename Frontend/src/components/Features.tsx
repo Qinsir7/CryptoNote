@@ -43,21 +43,13 @@ const Features: React.FC = () => {
 		}, 2500); // 增加间隔时间
 		return () => clearInterval(interval);
 	}, [features.length]);
-	const download = () => {
-		const link = document.createElement("a");
-		link.href = "https://github.com/Qinsir7/CryptoNote/archive/refs/heads/main.zip";
-		link.download = "CryptoNote.zip";
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-	};
 	return (
 		<section className="py-20 px-4">
 			<div className="container mx-auto">
 				<div className="text-center mb-8">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">Usage Examples</h2>
 				</div>
-				<p className="mb-16 text-lg text-foreground/50">
+				<p className="mb-16 text-lg text-foreground/50 text-center">
 					Once installed, CryptoNote creates a folder called ‘CryptoNote’ in your Notes app with four specialized notes:
 				</p>
 				<div className="container mx-auto">
@@ -89,19 +81,11 @@ const Features: React.FC = () => {
 						))}
 					</div>
 				</div>
-				<p className="mb-16 mt-16 text-lg text-foreground/50">
+				<p className="mb-16 mt-16 text-lg text-foreground/50 text-center">
 					CryptoNote automatically runs every 10 minutes to check for new requests, so you don't need to do anything special after typing your request
 					with @crypto.
 				</p>
-				<h2 className="text-3xl md:text-4xl font-bold mb-16">Enjoy seamless blockchain integration right in your Notes app!</h2>
-				<Button
-					className="bg-gradient-primary hover:opacity-90 transition-opacity text-white px-8 py-6"
-					onClick={() => {
-						download();
-					}}
-				>
-					Download
-				</Button>
+				<h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Enjoy seamless blockchain integration right from Notes app!</h2>
 			</div>
 		</section>
 	);
