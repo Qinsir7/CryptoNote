@@ -26,3 +26,6 @@ We're creating an AI co-pilot for the entire Web3 ecosystem, accessible throug
 
 ## Website
 https://crypto-note-lemon.vercel.app/
+
+## Demo
+https://youtu.be/w5MCAacR_1U
