@@ -23,4 +23,4 @@ We're creating an AI co-pilot for the entire Web3 ecosystem, accessible throug
 
 
 ## Website
-https://chrono-memories-gateway.vercel.app/
+https://crypto-note-lemon.vercel.app/
