@@ -45,8 +45,8 @@ const Hero: React.FC = () => {
 						<iframe
 							width="100%"
 							height="100%"
-							src="https://www.youtube.com/embed/rL1vXsBGVx8?si=56RsGqgGBg7RKxYA"
-							title="YouTube video player"
+							src="https://youtu.be/w5MCAacR_1U"
+							title="CryptoNote Demo"
 							frameBorder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							referrerPolicy="strict-origin-when-cross-origin"
