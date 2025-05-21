@@ -29,3 +29,5 @@ https://crypto-note-lemon.vercel.app/
 
 ## Demo
 https://youtu.be/w5MCAacR_1U
+
+- ETH Beijing AI track 3rd place
